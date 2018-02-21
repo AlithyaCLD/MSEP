@@ -1,3 +1,8 @@
-categories: [laptop, imprimante, moniteur, clavier]
-
 category: laptop
+catalog:
+  categories: 
+    - laptop
+    - imprimante
+    - moniteur
+    - clavier]
+
