@@ -1,2 +1,9 @@
-customers: [ali, tamo, amina]
-suppliers: [toto, tata, titi]
+user:
+  customers: 
+    - ali
+    - tamo
+    - amina
+  suppliers: 
+    - toto
+    - tata
+    - titi
