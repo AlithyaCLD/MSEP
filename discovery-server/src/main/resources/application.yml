@@ -7,3 +7,10 @@ eureka:
     fetch-registry: false
   server:
     wait-time-in-ms-when-sync-empty: 5
+    
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.alithya: DEBUG
