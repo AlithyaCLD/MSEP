@@ -1,0 +1,14 @@
+version: '2'
+services:
+  eurekaserver:
+   image:   alithya/discoveryserver:alpha1
+   ports:
+       - "8761:8761"
+  configserver:
+    image: alithya/configserver:alpha1
+    ports:
+       - "8881:8881"
+    environment:
+       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+       EUREKASERVER_PORT: "8761"
+       ENCRYPT_KEY:       "IMSYMMETRIC"
