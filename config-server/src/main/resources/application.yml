@@ -1,12 +1,11 @@
 server:
   port: 8881
-  
 spring:
   cloud:
     config:
       server:
         git:
-          uri: https://bitbucket.org/gnaoussi/config-repo
+          uri: https://github.com/AlithyaCLD/msep-config-repo
           search-paths: cart,product,comment,order,payment,user
-          username: gervais.naoussi@alithya.com
-          password: ss2017si!* 
+          username: AlithyaCLD
+          password: Alithya123!CLD 
