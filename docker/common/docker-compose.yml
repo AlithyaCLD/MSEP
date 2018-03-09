@@ -1,4 +1,4 @@
-version: '2'
+version: '2.2'
 services:
   eurekaserver:
    image:   alithya/discoveryserver:alpha1
@@ -12,3 +12,65 @@ services:
        EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
        EUREKASERVER_PORT: "8761"
        ENCRYPT_KEY:       "IMSYMMETRIC"
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+  gatewayservice:
+    image: alithya/gatewayservice:alpha1
+    ports:
+      - "8080:8080"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8080"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      EUREKASERVER_PORT:   "8761"
+      CONFIGSERVER_PORT:   "8881"
+      ZIPKIN_URI: "http://zipkin:9411"
+      ZIPKIN_PORT:         "9411"
+  database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=elise
+      - POSTGRES_DB=product
+  productservice:
+    image: alithya/productservice:alpha1
+    ports:
+      - "8883:8883"
+    environment:
+      PROFILE: "dev"
+      SERVER_PORT: "8883"
+      CONFIGSERVER_URI: "http://configserver:8881"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      DATABASESERVER_PORT: "5432"
+      DATABASESERVER_URL: "jdbc:postgresql://database:5432/product"
+      EUREKASERVER_PORT:   "8761"
+      CONFIGSERVER_PORT:   "8881"
+      ENCRYPT_KEY:       "IMSYMMETRIC"
+      ZIPKIN_URI: "http://zipkin:9411"
+      ZIPKIN_PORT:         "9411"
+  userservice:
+    image: alithya/userservice:alpha1
+    ports:
+      - "8884:8884"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8884"
+      CONFIGSERVER_URI: "http://configserver:8881"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      DATABASESERVER_PORT: "5432"
+      EUREKASERVER_PORT:   "8761"
+      CONFIGSERVER_PORT:   "8881"
+      ENCRYPT_KEY:       "IMSYMMETRIC"
+      ZIPKIN_URI: "http://zipkin:9411"
+      ZIPKIN_PORT:         "9411"
+    scale: 1
+  logspout:
+    image: gliderlabs/logspout
+    command: syslog://logs4.papertrailapp.com:47357
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

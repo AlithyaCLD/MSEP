@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.alithya.catalog.service;
+package com.alithya.product.microservice;
 
 import java.util.List;
 
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  */
 @FeignClient("user")
-public interface UserService {
+public interface UserMicroService {
 
-	@GetMapping("/user/customers")
+	@GetMapping("/customers")
 	List<String> getCustomers();
 	
-	@GetMapping("/user/customers/{id}")
+	@GetMapping("/customers/{id}")
 	String getCustomer(@PathVariable("id") Integer customerId);
 	
-	@GetMapping("/user/suppliers")
+	@GetMapping("/suppliers")
 	List<String> getSuppliers();
 	
-	@GetMapping("/user/suppliers/{id}")
+	@GetMapping("/suppliers/{id}")
 	String getSupplier(@PathVariable("id") Integer supplierId);
 }

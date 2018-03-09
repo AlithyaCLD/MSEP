@@ -27,7 +27,7 @@ import com.alithya.product.service.CategoryService;
  *
  */
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryController {
 	
 	private CategoryService categoryService;
@@ -41,7 +41,7 @@ public class CategoryController {
 		this.categoryService = categoryService;
 	}
 
-	@GetMapping("/")
+	@GetMapping(value= {"","/"})
 	public ResponseEntity<List<Category>> getAllCategories() {
 		return new ResponseEntity<List<Category>>(categoryService.getAllCategories(), null, HttpStatus.OK);
 	}

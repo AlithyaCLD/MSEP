@@ -3,6 +3,8 @@
  */
 package com.alithya.product.config;
 
+import java.util.List;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -14,21 +16,19 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix="product")
 public class ProductProperties {
 
-	private String name;
+	private List<String> storeProducts;
 
 	/**
-	 * @return the name
+	 * @return the storeProducts
 	 */
-	public String getName() {
-		return name;
+	public List<String> getStoreProducts() {
+		return storeProducts;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param storeProducts the storeProducts to set
 	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
+	public void setStoreProducts(List<String> storeProducts) {
+		this.storeProducts = storeProducts;
+	}	
 }
