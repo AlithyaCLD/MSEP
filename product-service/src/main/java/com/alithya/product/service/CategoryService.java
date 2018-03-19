@@ -30,10 +30,10 @@ public class CategoryService {
 	}
 	
 	public Category findOneById(Long categoryId) {
-		return categoryRepository.findById(categoryId).orElse(null);
+		return categoryRepository.findOne(categoryId);
 	}
 	
 	public void delete(Long id) {
-		categoryRepository.deleteById(id);
+		categoryRepository.delete(id);
 	}
 }

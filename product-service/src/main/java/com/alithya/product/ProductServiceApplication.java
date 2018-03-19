@@ -3,16 +3,18 @@ package com.alithya.product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 
-import brave.sampler.Sampler;
-
 @SpringBootApplication
-@EnableFeignClients
 @EnableCircuitBreaker
+@EnableHystrix
 @EnableHystrixDashboard
+@EnableFeignClients
 public class ProductServiceApplication {
 
 	public static void main(String[] args) {
@@ -21,6 +23,6 @@ public class ProductServiceApplication {
 	
 	@Bean
 	public Sampler defautlSampler() {
-		return Sampler.ALWAYS_SAMPLE;
+		return new AlwaysSampler();
 	}
 }

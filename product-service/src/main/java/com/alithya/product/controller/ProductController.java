@@ -39,8 +39,8 @@ public class ProductController {
 	}
 
 
-	@GetMapping(value= {"","/"})
-	public List<String> listStore(){
+	@GetMapping(value= {"/suppliers"})
+	public List<String> listStoreWithSuppliers(){
 		List<String> results = new ArrayList<>();
 		List<String> suppliers = userService.getSuppliers();
 		log.info("Suppliers size {}",suppliers.size());
@@ -61,5 +61,10 @@ public class ProductController {
 		}
 		
 		return results;
+	}
+	
+	@GetMapping(value= {"","/"})
+	public List<String> listStore(){
+		return  productProperties.getStoreProducts();
 	}
 }

@@ -6,13 +6,11 @@ package com.alithya.gateway.filter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Component;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
-
-import brave.Tracer;
 
 
 /**
@@ -37,9 +35,9 @@ public class ResponseFilter extends ZuulFilter {
 	}
 
 	@Override
-	public Object run() throws ZuulException {
+	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
-		ctx.getResponse().addHeader("alithya-correlation-id",  tracer.currentSpan().context().traceIdString());
+		ctx.getResponse().addHeader("alithya-correlation-id",  tracer.getCurrentSpan().traceIdString());
 		return null;
 	}
 
