@@ -1,0 +1,7 @@
+{
+    "count": 1,
+    "git": {
+        "uri": "https://github.com/AlithyaCLD/msep-config-repo.git",
+        "searchPaths": "cart,comment,note,notes,notification,order,payment,product,user"
+    }
+}
