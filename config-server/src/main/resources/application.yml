@@ -7,5 +7,3 @@ spring:
         git:
           uri: https://github.com/AlithyaCLD/msep-config-repo
           search-paths: cart,product,comment,order,payment,user
-          username: AlithyaCLD 
-          password: Alithya123!CLD  
