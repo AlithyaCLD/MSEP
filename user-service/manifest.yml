@@ -1,0 +1,13 @@
+applications:
+  - name: user-service
+    memory: 1024M
+    instances: 1
+    buildpack: https://github.com/cloudfoundry/java-buildpack.git
+    route: msep-user-service
+    path: target/user-service-0.0.1-SNAPSHOT.jar
+    env:
+      SPRING_PROFILES_ACTIVE: dev
+    services:
+      - config-server
+      - discovery-server
+      - circuitbreaker-dashboard
