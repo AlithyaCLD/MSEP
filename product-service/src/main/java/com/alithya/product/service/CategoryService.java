@@ -13,7 +13,6 @@ public class CategoryService {
 	private final CategoryRepository categoryRepository;
 	
 	public CategoryService(CategoryRepository categoryRepository) {
-		// TODO Auto-generated constructor stub
 		this.categoryRepository = categoryRepository;
 	}
 	

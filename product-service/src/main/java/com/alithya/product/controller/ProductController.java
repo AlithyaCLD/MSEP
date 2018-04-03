@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.alithya.product.controller;
 
 import java.util.ArrayList;
@@ -12,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alithya.product.config.ProductProperties;
 import com.alithya.product.microservice.UserMicroService;
+import com.alithya.product.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,16 +22,15 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
 	
 	private final ProductProperties productProperties;
 	
-	private final UserMicroService userService;
+	private final UserService userService;
 	
 	/**
 	 * @param productProperties
 	 */
-	public ProductController(ProductProperties productProperties, UserMicroService userService) {
+	public ProductController(ProductProperties productProperties, UserService userService) {
 		this.productProperties = productProperties;
 		this.userService = userService;
 	}
@@ -52,7 +49,6 @@ public class ProductController {
 				results.add(product);
 			}
 		}else {
-		
 			int i = 0;
 			for (String product : productProperties.getStoreProducts()) {
 				results.add(product+" "+suppliers.get(i));

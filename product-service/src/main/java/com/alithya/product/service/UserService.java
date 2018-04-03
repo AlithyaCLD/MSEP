@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.alithya.product.service;
 
 import java.util.ArrayList;

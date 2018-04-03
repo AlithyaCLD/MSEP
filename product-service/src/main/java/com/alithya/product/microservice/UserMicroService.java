@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.alithya.product.microservice;
 
 import java.util.List;
