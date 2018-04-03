@@ -8,7 +8,7 @@ This project is intended to be a proof of concept and an environment for testing
 This service is a basic implementation of the Spring Cloud Configuration consuming configurations from the [msep-config-repo](https://github.com/AlithyaCLD/msep-config-repo) Github repo.
 
 ### PCF
-On PCF it's possible to use a provided Spring Cloud Configuration Server by using the following JSON configuration: [config-server-pcf.json](blob/master/config-server/config-server-pcf.json) 
+On PCF it's possible to use a provided Spring Cloud Configuration Server by using the following JSON configuration: [config-server-pcf.json](https://github.com/AlithyaCLD/MSEP/blob/master/config-server/config-server-pcf.json)
 
 That configuration was created based on this [reference](https://docs.pivotal.io/spring-cloud-services/1-3/common/config-server/configuring-with-git.html).
 
